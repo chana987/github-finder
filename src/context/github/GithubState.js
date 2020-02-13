@@ -20,8 +20,7 @@ const GithubState = props => {
     const searchUsers = async (text) => {
         setLoading()
 
-        const res = await axios.get(`https://api.github.com/search/users?q=${
-            text}`, { params: { username: process.env.REACT_APP_GITHUB_TOKEN } }
+        const res = await axios.get(`https://api.github.com/search/users?q=${text}`, { params: { username: process.env.REACT_APP_GITHUB_TOKEN } }
         );
 
         dispatch({
@@ -45,9 +44,7 @@ const GithubState = props => {
     // get repos
     const getRepos = async (username) => {
         setLoading()
-        const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${
-            process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${
-            process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+        const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`, { params: { username: process.env.REACT_APP_GITHUB_TOKEN } }
         );
 
         dispatch({
