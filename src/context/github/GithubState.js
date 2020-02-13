@@ -21,9 +21,7 @@ const GithubState = props => {
         setLoading()
 
         const res = await axios.get(`https://api.github.com/search/users?q=${
-            text}&client_id=${
-            process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${
-            process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+            text}`, { params: { username: process.env.REACT_APP_GITHUB_TOKEN } }
         );
 
         dispatch({
@@ -35,9 +33,7 @@ const GithubState = props => {
     // get user
     const getUser = async (username) => {
         setLoading()
-        const res = await axios.get(`https://api.github.com/users/${username}?client_id=${
-            process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${
-            process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+        const res = await axios.get(`https://api.github.com/users/${username}`, { params: { username: process.env.REACT_APP_GITHUB_TOKEN } }
         );
 
         dispatch({
